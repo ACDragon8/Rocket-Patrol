@@ -5,12 +5,20 @@ Time:8:47PM -
 Mods:
 Total - 
 Added bgm - 1 pt
-Allowed controlling rocket while fired - 1pt
+Allowed controlling rocket while fired - 1pt (use arrow keys )
+
 Added visible timer to game - 3pt
-Added time add on successful hit and time loss on miss - 5pt
+
+Implemented parallax scrolling for background? - 3pts
+(It was a part of the tutorial it was already in the play scene, so I implemented it for the menu scene)
+
+Added time add on successful hit (2 sec) and time loss on miss (1 sec) - 5pt
+(this is evil btw)
+
+Added new "scout" enemy which travels twice as fast and waits 5 seconds to respawn after being hit - 5ft
+
 Citations:
 bgm used - 8 Bit Adventure - by David Renda
-for math.random - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
 
 let config = {

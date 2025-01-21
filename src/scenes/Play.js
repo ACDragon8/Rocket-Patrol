@@ -21,7 +21,8 @@ class Play extends Phaser.Scene {
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0)
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0)
         this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0)
-        
+        this.scout01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*7+ borderPadding*8, 'scout', 0, 50).setOrigin(0,0)
+        this.scout01.setMoveSpeed(game.settings.spaceshipSpeed * 2)
 
         
         keyFIRE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
@@ -116,6 +117,7 @@ class Play extends Phaser.Scene {
         this.ship01.update()
         this.ship02.update()
         this.ship03.update()
+        this.scout01.update()
       } 
 
       if(this.checkCollision(this.p1Rocket, this.ship03)) {
@@ -129,6 +131,14 @@ class Play extends Phaser.Scene {
       if (this.checkCollision(this.p1Rocket, this.ship01)) {
         this.p1Rocket.reset()
         this.shipExplode(this.ship01)
+      }
+      if (this.checkCollision(this.p1Rocket, this.scout01)) {
+        this.p1Rocket.reset()
+        this.shipExplode(this.scout01)
+        this.scout01.setMoveSpeed(0)
+        this.time.delayedCall(5000,() => {
+          this.scout01.setMoveSpeed(2*game.settings.spaceshipSpeed)
+        }, null, this)
       }
       //check for miss
 
@@ -155,9 +165,9 @@ class Play extends Phaser.Scene {
     let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
     boom.anims.play('explode')             // play explode animation
     boom.on('animationcomplete', () => {   // callback after anim completes
-        ship.reset()                         // reset ship position
-        ship.alpha = 1                       // make ship visible again
-        boom.destroy()                       // remove explosion sprite
+    ship.reset()                         // reset ship position
+    ship.alpha = 1                       // make ship visible again
+    boom.destroy()                       // remove explosion sprite
     })
     
     this.p1Score += ship.points

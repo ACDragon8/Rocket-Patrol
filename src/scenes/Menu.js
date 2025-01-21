@@ -7,6 +7,7 @@ class Menu extends Phaser.Scene {
         this.load.image('rocket', './assets/rocket.png')
         this.load.image('spaceship', './assets/spaceship.png')
         this.load.image('starfield', './assets/starfield.png')
+        this.load.image('scout','./assets/scout.png')
         this.load.spritesheet('explosion', './assets/explosion.png', {
             frameWidth: 64,
             frameHeight: 32,
@@ -38,6 +39,7 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+        this.starfield = this.add.tileSprite(0,0,640,480,'starfield').setOrigin(0,0)
 
         this.add.text(game.config.width/2,game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL',menuConfig).setOrigin(0.5)
         this.add.text(game.config.width/2, game.config.height/2, 'Use <--> to move & (F) to fire', menuConfig).setOrigin(0.5)
@@ -50,6 +52,7 @@ class Menu extends Phaser.Scene {
     }
 
     update() {
+        this.starfield.tilePositionX -= 4
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             game.settings = {
                 spaceshipSpeed: 3,
