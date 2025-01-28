@@ -174,6 +174,8 @@ class Play extends Phaser.Scene {
     this.timer += 2000
     this.timerRight.text = this.timer / 1000
     this.scoreLeft.text = this.p1Score
-    this.sound.play('sfx-explosion')
+    let r= Math.ceil(Math.random()*4)
+    console.log(r)
+    this.sound.play('sfx-explosion'+r)
     }
 }
