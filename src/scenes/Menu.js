@@ -16,6 +16,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx-select', './assets/sfx-select.wav')
         this.load.audio('sfx-explosion', './assets/sfx-explosion.wav')
         this.load.audio('sfx-shot', './assets/sfx-shot.wav')
+        this.load.audio('bgm-play','./assets/2021-08-16_-_8_Bit_Adventure_-_www.FesliyanStudios.com.mp3')
     }
 
     create() {
@@ -66,6 +67,7 @@ class Menu extends Phaser.Scene {
             this.sound.play('sfx-select')
             this.scene.start('playScene')    
           }
+        
     }
 
 }
